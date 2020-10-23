@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- referencia a jquery -->
+    <script src="_src/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <div>
+        <input type="button" value="Aumentar tamaño imagen" onclick="aumentaTamano();"/>
+        <input type="button" value="Disminuir tamaño imagen" onclick="disminuirTamano();"/>
+    </div>
+    <div>
+        <img id="imagen" src="https://avatars0.githubusercontent.com/u/31946346?s=460&u=b9e6071d9a16ba4a829e7bcb7c80c5acedcc54a6&v=4" style="width: 300px; height:250px" />
+    </div>
+</body>
+</html>
+
+<script>
+    // se optiene valor de width de imagen
+    alert($('#imagen').css('width'));
+
+    // función para aumentar tamaño de imagen
+    function aumentaTamano()
+    {
+        //Obtener ancho y alto originales
+        ancho=$('#imagen').css('width');
+        alto=$('#imagen').css('height');
+
+        // Aumentar tamaño obtenido en 10px
+        ancho=parseInt(ancho)+parseInt(10);
+        alto=parseInt(alto)+parseInt(10);
+
+        // Se asigna nuevo tamaño
+        $('#imagen').css('width', ancho);
+        $('#imagen').css('height',alto);
+    }
+
+    // funcion para disminuir tamaño de imagen
+    function disminuirTamano()
+    {
+        // obtener alto y ancho originales
+        ancho=$('#imagen').css('width');
+        alto=$('#imagen').css('height');
+
+        // Aumentar tamaño obtenido 10px
+        ancho=parseInt(ancho)-parseInt(10);// se usa parseint para tratar valores, de lo contrario el + concatenaria
+        alto=parseInt(alto)-parseInt(10);
+        
+        /*
+        //asignar nuevos valores
+        $('#imagen').css('width', ancho);
+        $('#imagen').css('height',alto);
+        */
+
+        //asignar nuevos valores, en la misma linea, utilizando json
+        $('#imagen').css({'width': ancho,'height': alto});
+    }
+</script>

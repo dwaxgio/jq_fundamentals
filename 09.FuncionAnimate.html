@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- referencia a jquery -->
+    <script src="_src/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <input type="button" value="inicia" onclick="inicia();" />
+    <div  style="width:100px; position:relative; height:100px; background:#060;"></div>
+    <br />
+</body>
+</html>
+
+<script>
+$("div")
+    .animate({ //seleccionamos el div
+            opacity: 0.25, //dismunuye la opacidad del objeto
+            left: "+=100", //aumenta la posicion en horizontal del objeto a 100 px
+            height: "toggle" //oculta el objeto
+        }, 2000 //la animación se realiza en 2 segundos
+        ,
+        function() { //ejecutamos un callback con función anonima para regresar a la normalidad el objeto
+            $("div").animate({ //seleccionamos nuevamente el div
+                    opacity: 1, //regresa la opacidad del objeto a normal
+                    left: "-=100", //dismunuye la posicion del objeto menos 100 px
+                    height: "toggle" //aparece el objeto
+                }, 1000 //tiempo de 1 segundo
+                , inicia //el callback ejecuta la funcion inica para volver a comenzar todo
+            )
+        })
+
+</script>

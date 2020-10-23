@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- referencia a jquery -->
+    <script src="_src/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <input type="text" value="Un Valor" id="txtTexto"/>
+
+    <a id="liga" href="https://www.google.com/">Ir a perfil GitHub</a>
+
+    <div id="contenido">
+        <ul>
+            <li>un elemento</li>
+            <li>un elemento</li>
+            <li>un elemento</li>
+            <li>un elemento</li>
+            <li>un elemento</li>
+        </ul>
+    </div>
+
+    <input type="text" value="un valor" id="txtText1"/>
+    <input type="text" value="un valor" id="txtText2"/>
+    <input type="text" value="un valor" id="txtText3"/>
+    <input type="text" value="un valor" id="txtText4"/>
+</body>
+</html>
+
+<script>
+    // alert a txtText
+    var valorDeCajaDeTexto=$("#txtTexto").val(); // Recordar hacer referencia a ID con #
+    alert(valorDeCajaDeTexto);
+
+    // jquery id=liga
+    alert($("#liga").prop("href")); // con prop(), muestra el contenido de <a> con id liga
+
+    // implementando misma función, para asignar un valor a contenido href
+    $("#liga").prop("href","https://github.com/dwaxgio");
+
+    // Funcion para obtener contenido HTML
+    obtenerHTML=$("#contenido").html();
+    alert(obtenerHTML);
+
+    // funcion a varios elementos // poner un value a todos los elementos
+    $("input").prop("value", "nuevo valor para todos");
+
+</script>

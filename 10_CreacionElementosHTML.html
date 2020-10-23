@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- referencia a jquery -->
+    <script src="_src/jquery-3.5.1.min.js"></script>
+
+    
+    <style>
+        #tutorial .bloque{
+            float:left;
+            width:110px;
+        }
+        #tutorial input,#tutorial label{
+            font-size:11px;
+            width:60px;
+        }
+        #tablaProductos,#tablaProductos td,#tablaProductos th{
+            border:1px solid #333;
+            border-collapse:collapse;
+        }
+        #tableProductos th{
+            width:100px;
+        }
+        </style>
+</head>
+<body>
+    <div id="tutorial">
+        <div >
+            <div class="bloque">
+                <label>Código</label>
+                <input class="texto" type="text" id="txtCodigo" value="" />
+            </div>
+            <div class="bloque">
+                <label>Nombre</label>
+                <input class="texto" type="text" id="txtNombre" value="" />
+            </div>
+              <div class="bloque">
+                <label>Precio</label>
+                <input class="texto" type="text" id="txtPrecio" value="" />
+            </div>
+            <div class="bloque">
+                <input value="Agregar" type="button" onclick="Agrega()" />
+            </div>
+            <div style="clear:both"></div>
+        </div>
+
+        <div>
+            <table style="width:400px;" id="tablaProductos">
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>X</th>
+                </tr>
+            </table>
+        </div>
+     </div>
+</body>
+</html>
+
+<script>
+    function Agrega(){
+ 
+ //obtenemos los valores de nuestra caja de texto
+ nodoAInsertar="&lt;tr&gt;"; //nodo en el cual obtendremos el codigo html nuevo a insertar en la tabla
+
+ $(".texto").each(function(){ //selector por clase texto y un each para recorrer elementos
+
+     nodoAInsertar+="&lt;td&gt;"; //abrimos td
+
+     nodoAInsertar+=$(this).prop("value"); //obtenemos el valor de la caja de texto
+
+     nodoAInsertar+="&lt;/td&gt;" //cerramos td
+
+     //limpiamos la caja de texto actual
+     $(this).val("");
+ });
+
+ //agregamos el botpon para eliminar
+ nodoAInsertar+="&lt;td&gt;&lt;input type='button' value='Eliminar' onclick='Elimina(this)'&gt;&lt;/td&gt;"
+ nodoAInsertar+="&lt;/tr&gt;" //cerramos el tr
+
+ //por ultimo insertamos el nodo tr a la tabla
+ $("#tablaProductos").append(nodoAInsertar)
+
+ //ponemos el foco en la caja de texto código
+ $("#txtCodigo").focus()
+}
+
+function Elimina(NodoBoton){
+
+ //recibimos el botón como parametro y lo transformamos a jquery
+ var botonEliminar=$(NodoBoton);
+
+ //obtenemos el padre tr del boton para asi eliminarlo, el primer padre es td, el segundo es tr
+ var padreTRBoton=$(botonEliminar).parent().parent();
+
+ padreTRBoton.remove();
+
+ //todo esto puede funcionar con esta misma linea "$(NodBoton).parent().parent().remove();"
+}
+</script>

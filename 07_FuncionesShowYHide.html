@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- referencia a jquery -->
+    <script src="_src/jquery-3.5.1.min.js"></script>
+</head>
+
+<style>
+    #acordeon
+    {
+        width:500px;
+        border:1px solid #777;
+    }
+
+    .titulo
+    {
+        background: #CCC;
+        cursor:pinter;
+        padding:3px;
+        border-bottom: 1px solid #666;
+        text-align: center;
+    }
+
+    .texto
+    {
+        padding: 5px;
+    }
+</style>
+
+<div id="acordeon">
+    <div>
+        <div class="titulo">Sección 1</div>
+        <div class="texto">Texto de la sección 1</div>
+    </div>
+    <div>
+        <div class="titulo">Sección 2</div>
+        <div class="texto">Texto de la sección 2</div>
+    </div>
+    <div>
+        <div class="titulo">Sección 3</div>
+        <div class="texto">Texto de la sección 3</div>
+    </div>
+    <div>
+        <div class="titulo">Sección 4</div>
+        <div class="texto">Texto de la sección 4</div>
+    </div>
+</div>
+
+<body>
+
+    <!--
+    <input type="button" onclick="ocultarAcordeon();"value="Ocultar acordeon">
+    <input type="button" onclick="mostrarAcordeon();"value="Mostrar acordeon">
+    -->
+
+
+</body>
+</html>
+
+
+<script>
+    /*
+    function ocultarAcordeon()
+    {
+        $('#acordeon').hide();
+    }
+
+    function mostrarAcordeon()
+    {
+        $('#acordeon').show();
+    }*/
+
+    $(document).ready(function()
+    {
+        //agregamos evento clic a los titulos
+ 
+        $(".titulo").click(function()
+        {
+        
+            //obtenemos el objeto jquery que ejecuto el evento
+            divTitulo=$(this);
+ 
+            //ocultamos todos los div con clase texto
+            $(".texto").hide();
+ 
+            //mostramos el div correspondiente a la sección
+            divTitulo.parent().find(".texto").show();
+        });
+ 
+        //ocultamos todos los divs de clase texto al iniciar
+        $(".texto").hide();
+    });
+</script>
